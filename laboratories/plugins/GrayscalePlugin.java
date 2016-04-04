@@ -1,9 +1,9 @@
-package AnalizaObrazow;
+package AnalizaObrazow.laboratories.plugins;
 
 import kimage.image.Image;
 import kimage.plugin.Plugin;
 
-class GrayscalePlugin extends Plugin {
+public class GrayscalePlugin extends Plugin {
 
     @Override
     public void process(Image imgIn, Image imgOut) {

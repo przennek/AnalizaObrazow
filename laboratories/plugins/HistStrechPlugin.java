@@ -1,4 +1,4 @@
-package AnalizaObrazow;
+package AnalizaObrazow.laboratories.plugins;
 
 import kimage.image.Image;
 import kimage.plugin.Plugin;

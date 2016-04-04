@@ -1,5 +1,7 @@
-package AnalizaObrazow;
+package AnalizaObrazow.laboratories;
 
+import AnalizaObrazow.laboratories.plugins.GrayscalePlugin;
+import AnalizaObrazow.laboratories.plugins.HistStrechPlugin;
 import kimage.image.Image;
 import kimage.plugin.Plugin;
 import kimage.utils.gui.ImageFrame;
