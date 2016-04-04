@@ -1,4 +1,4 @@
-package pchFiles;
+package AnalizaObrazow;
 
 import kimage.image.Image;
 import kimage.plugin.Plugin;
