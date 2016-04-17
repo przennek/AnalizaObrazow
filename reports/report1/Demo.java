@@ -29,7 +29,7 @@ public class Demo {
         niblackBinExec.execute();
 
         Executor sauvolaBinExec = new StepHandlerExecutor(filename);
-        sauvolaBinExec.add(new SauvolaBinPlugin(-0.01, 2));
+        sauvolaBinExec.add(new SauvolaBinPlugin(-0.01, 3));
         sauvolaBinExec.execute();
 
         Executor gaussExec = new StepHandlerExecutor(filename);
