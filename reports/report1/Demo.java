@@ -2,6 +2,7 @@ package AnalizaObrazow.reports.report1;
 
 import AnalizaObrazow.reports.report1.plugins.binar.NiblackBinPlugin;
 import AnalizaObrazow.reports.report1.plugins.binar.SauvolaBinPlugin;
+import AnalizaObrazow.reports.report1.plugins.context.MedianFilterPlugin;
 import AnalizaObrazow.reports.report1.plugins.noncontext.QuantumPlugin;
 import AnalizaObrazow.reports.report1.plugins.noncontext.ReflectionPlugin;
 import AnalizaObrazow.reports.report1.plugins.noncontext.ShuffleColorIntensityPlugin;
@@ -22,11 +23,15 @@ public class Demo {
         exec.save("./res/out.png");
 
         Executor exec2 = new StepHandlerExecutor(filename);
-        exec2.add(new NiblackBinPlugin(-0.1));
+        exec2.add(new NiblackBinPlugin(-0.1, 2));
         exec2.execute();
 
         Executor exec3 = new StepHandlerExecutor(filename);
-        exec3.add(new SauvolaBinPlugin(-0.01));
+        exec3.add(new SauvolaBinPlugin(-0.01, 2));
         exec3.execute();
+
+        Executor exec4 = new StepHandlerExecutor(filename);
+        exec4.add(new MedianFilterPlugin(1));
+        exec4.execute();
     }
 }

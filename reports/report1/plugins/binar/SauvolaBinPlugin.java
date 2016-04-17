@@ -6,9 +6,7 @@ import kimage.plugins.color.Grayscale;
 
 import java.util.List;
 
-import static AnalizaObrazow.reports.report1.util.ImageProcUtil.get8Neighbours;
-import static AnalizaObrazow.reports.report1.util.ImageProcUtil.getAvg;
-import static AnalizaObrazow.reports.report1.util.ImageProcUtil.getStanDev;
+import static AnalizaObrazow.reports.report1.util.ImageProcUtil.*;
 
 /**
  * Created by p on 17.04.16.
@@ -19,18 +17,20 @@ public class SauvolaBinPlugin extends Plugin {
     private static final Double R = 128.0;
 
     private Double kParam;
+    private Integer bounds;
 
-    public SauvolaBinPlugin(Double kParam) {
+    public SauvolaBinPlugin(Double kParam, Integer bounds) {
         this.kParam = kParam;
+        this.bounds = bounds;
     }
 
     @Override
     public void process(Image imgIn, Image imgOut) {
         Image cpy = imgIn.copy();
         (new Grayscale()).process(cpy, cpy);
-        for (int i = 1; i < cpy.getWidth() - 1; i++) {
-            for (int j = 1; j < cpy.getHeight() - 1; j++) {
-                List<Integer> neighbours = get8Neighbours(cpy, i, j);
+        for (int i = bounds; i < cpy.getWidth() - bounds; i++) {
+            for (int j = bounds; j < cpy.getHeight() - bounds; j++) {
+                List<Integer> neighbours = getNeighbours(cpy, i, j, bounds);
                 Double avg = getAvg(neighbours);
                 Double sdev = getStanDev(neighbours);
                 Double treshold = avg * (1 + kParam * ((sdev / R) - 1));

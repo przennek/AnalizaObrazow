@@ -3,16 +3,17 @@ package AnalizaObrazow.reports.report1.util;
 import kimage.image.Image;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by p on 17.04.16.
  */
 public class ImageProcUtil {
-    public static List<Integer> get8Neighbours(Image im, int x, int y) {
+    public static List<Integer> getNeighbours(Image im, int x, int y, int bounds) {
         List<Integer> out = new ArrayList<>();
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
+        for (int i = -bounds; i <= bounds; i++) {
+            for (int j = -bounds; j <= bounds; j++) {
                 out.add(im.getBlue(x + i, y + j));
             }
         }
@@ -40,5 +41,15 @@ public class ImageProcUtil {
         }
         buffer = Math.sqrt((double) (stanDev / n));
         return buffer;
+    }
+
+    public static Double getMedian(List<Integer> sur) {
+        Integer size = sur.size();
+        Collections.sort(sur);
+        if (size % 2 == 0) {
+            return (sur.get(size / 2) + sur.get(size / 2 + 1)) / 2.0;
+        } else {
+            return new Double(sur.get(size / 2));
+        }
     }
 }
