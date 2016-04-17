@@ -1,8 +1,11 @@
 package AnalizaObrazow.reports.report1;
 
-import AnalizaObrazow.reports.report1.plugins.binar.NiblackBinPlugin;
-import AnalizaObrazow.reports.report1.plugins.binar.SauvolaBinPlugin;
+import AnalizaObrazow.reports.report1.plugins.context.binar.NiblackBinPlugin;
+import AnalizaObrazow.reports.report1.plugins.context.binar.SauvolaBinPlugin;
 import AnalizaObrazow.reports.report1.plugins.context.MedianFilterPlugin;
+import AnalizaObrazow.reports.report1.plugins.generators.DummyNoiseGenerationPlugin;
+import AnalizaObrazow.reports.report1.plugins.generators.GaussNoiseGeneratorPlugin;
+import AnalizaObrazow.reports.report1.plugins.generators.SaltAndPepperGeneratorPlugin;
 import AnalizaObrazow.reports.report1.plugins.noncontext.QuantumPlugin;
 import AnalizaObrazow.reports.report1.plugins.noncontext.ReflectionPlugin;
 import AnalizaObrazow.reports.report1.plugins.noncontext.ShuffleColorIntensityPlugin;
@@ -15,23 +18,33 @@ import kimage.tools.executors.gui.StepHandlerExecutor;
 public class Demo {
     public static void main(String[] args) {
         String filename = "./res/lena.png";
-        Executor exec = new StepHandlerExecutor(filename);
-        exec.add(new ReflectionPlugin());
-        exec.add(new ShuffleColorIntensityPlugin());
-        exec.add(new QuantumPlugin(4));
-        exec.execute();
-        exec.save("./res/out.png");
+        Executor nonContextExec = new StepHandlerExecutor(filename);
+        nonContextExec.add(new ReflectionPlugin());
+        nonContextExec.add(new ShuffleColorIntensityPlugin());
+        nonContextExec.add(new QuantumPlugin(4));
+        nonContextExec.execute();
 
-        Executor exec2 = new StepHandlerExecutor(filename);
-        exec2.add(new NiblackBinPlugin(-0.1, 2));
-        exec2.execute();
+        Executor niblackBinExec = new StepHandlerExecutor(filename);
+        niblackBinExec.add(new NiblackBinPlugin(-0.1, 2));
+        niblackBinExec.execute();
 
-        Executor exec3 = new StepHandlerExecutor(filename);
-        exec3.add(new SauvolaBinPlugin(-0.01, 2));
-        exec3.execute();
+        Executor sauvolaBinExec = new StepHandlerExecutor(filename);
+        sauvolaBinExec.add(new SauvolaBinPlugin(-0.01, 2));
+        sauvolaBinExec.execute();
 
-        Executor exec4 = new StepHandlerExecutor(filename);
-        exec4.add(new MedianFilterPlugin(1));
-        exec4.execute();
+        Executor gaussExec = new StepHandlerExecutor(filename);
+        gaussExec.add(new GaussNoiseGeneratorPlugin(32));
+        gaussExec.add(new MedianFilterPlugin(1));
+        gaussExec.execute();
+
+        Executor saltAndPepperExec = new StepHandlerExecutor(filename);
+        saltAndPepperExec.add(new SaltAndPepperGeneratorPlugin());
+        saltAndPepperExec.add(new MedianFilterPlugin(1));
+        saltAndPepperExec.execute();
+
+        Executor dummyNoiseExec = new StepHandlerExecutor(filename);
+        dummyNoiseExec.add(new DummyNoiseGenerationPlugin());
+        dummyNoiseExec.add(new MedianFilterPlugin(1));
+        dummyNoiseExec.execute();
     }
 }
