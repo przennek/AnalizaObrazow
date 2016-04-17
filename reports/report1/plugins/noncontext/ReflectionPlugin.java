@@ -12,7 +12,6 @@ public class ReflectionPlugin extends Plugin {
         Image cpy = imgIn.copy();
         Integer width = imgIn.getWidth(), height = imgIn.getHeight();
         for (int i = 0, k = width - 1; i < width && k >= 0; i++, k--) {
-            System.out.println("i: " + i + " k: " + k);
             for (int j = 0; j < height; j++) {
                 imgOut.setRGB(i, j, cpy.getRed(k, j), cpy.getGreen(k, j), cpy.getBlue(k, j));
             }

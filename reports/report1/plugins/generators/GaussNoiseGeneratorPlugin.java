@@ -29,7 +29,6 @@ public class GaussNoiseGeneratorPlugin extends Plugin {
         for (int i = 0; i < cpy.getWidth(); i++) {
             for (int j = 0; j < cpy.getHeight(); j++) {
                 Integer noise = new Double(nextNormalRandom() * strength).intValue();
-                System.out.println(noise);
                 Integer newVal = (imgIn.getBlue(i, j) + noise);
                 if (newVal > 255) newVal = 255;
                 if (newVal < 0) newVal = 0;
