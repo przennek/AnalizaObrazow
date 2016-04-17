@@ -1,4 +1,4 @@
-package AnalizaObrazow.reports.report1.plugins;
+package AnalizaObrazow.reports.report1.plugins.noncontext;
 
 import kimage.image.Image;
 import kimage.plugin.Plugin;

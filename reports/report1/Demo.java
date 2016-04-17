@@ -1,13 +1,12 @@
 package AnalizaObrazow.reports.report1;
 
-import AnalizaObrazow.reports.report1.plugins.QuantumPlugin;
-import AnalizaObrazow.reports.report1.plugins.ReflectionPlugin;
-import AnalizaObrazow.reports.report1.plugins.ShuffleColorIntensityPlugin;
-import kimage.image.Image;
-import kimage.plugin.Plugin;
+import AnalizaObrazow.reports.report1.plugins.binar.NiblackBinPlugin;
+import AnalizaObrazow.reports.report1.plugins.binar.SauvolaBinPlugin;
+import AnalizaObrazow.reports.report1.plugins.noncontext.QuantumPlugin;
+import AnalizaObrazow.reports.report1.plugins.noncontext.ReflectionPlugin;
+import AnalizaObrazow.reports.report1.plugins.noncontext.ShuffleColorIntensityPlugin;
 import kimage.tools.executors.Executor;
 import kimage.tools.executors.gui.StepHandlerExecutor;
-import kimage.utils.gui.ImageFrame;
 
 /**
  * Created by p on 04.04.16.
@@ -18,14 +17,16 @@ public class Demo {
         Executor exec = new StepHandlerExecutor(filename);
         exec.add(new ReflectionPlugin());
         exec.add(new ShuffleColorIntensityPlugin());
-        exec.add(new QuantumPlugin(16));
+        exec.add(new QuantumPlugin(4));
         exec.execute();
         exec.save("./res/out.png");
 
-//        Image image = new Image("./res/lena.png");
-//        Plugin a = new ReflectionPlugin();
-//        a.process(image, image);
-//        ImageFrame frame2 = new ImageFrame(image);
-//        frame2.display();
+        Executor exec2 = new StepHandlerExecutor(filename);
+        exec2.add(new NiblackBinPlugin(-0.1));
+        exec2.execute();
+
+        Executor exec3 = new StepHandlerExecutor(filename);
+        exec3.add(new SauvolaBinPlugin(-0.01));
+        exec3.execute();
     }
 }
