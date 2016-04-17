@@ -34,7 +34,7 @@ public class SauvolaBinPlugin extends Plugin {
                 Double avg = getAvg(neighbours);
                 Double sdev = getStanDev(neighbours);
                 Double treshold = avg * (1 + kParam * ((sdev / R) - 1));
-                if(cpy.getBlue(i, j) > treshold) {
+                if (cpy.getBlue(i, j) > treshold) {
                     imgOut.setRGB(i, j, MAX_PIXEL_VAL, MAX_PIXEL_VAL, MAX_PIXEL_VAL);
                 } else {
                     imgOut.setRGB(i, j, MIN_PIXEL_VAL, MIN_PIXEL_VAL, MIN_PIXEL_VAL);

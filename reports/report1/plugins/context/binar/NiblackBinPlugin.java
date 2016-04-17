@@ -30,7 +30,7 @@ public class NiblackBinPlugin extends Plugin {
             for (int j = bounds; j < cpy.getHeight() - bounds; j++) {
                 List<Integer> neighbours = getNeighbours(cpy, i, j, bounds);
                 Integer val = new Double(getAvg(neighbours) + kParam * getStanDev(neighbours)).intValue();
-                if(cpy.getBlue(i, j) > val) {
+                if (cpy.getBlue(i, j) > val) {
                     imgOut.setRGB(i, j, MAX_PIXEL_VAL, MAX_PIXEL_VAL, MAX_PIXEL_VAL);
                 } else {
                     imgOut.setRGB(i, j, MIN_PIXEL_VAL, MIN_PIXEL_VAL, MIN_PIXEL_VAL);

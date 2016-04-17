@@ -17,7 +17,7 @@ public class QuantumPlugin extends Plugin {
     private Integer intervals;
 
     public QuantumPlugin(Integer intervals) {
-        if(intervals < 2) {
+        if (intervals < 2) {
             throw new InvalidParameterException("Interval number not supported, minimal value is 2.");
         }
         this.intervals = intervals;

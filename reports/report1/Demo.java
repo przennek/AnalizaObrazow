@@ -1,8 +1,8 @@
 package AnalizaObrazow.reports.report1;
 
+import AnalizaObrazow.reports.report1.plugins.context.MedianFilterPlugin;
 import AnalizaObrazow.reports.report1.plugins.context.binar.NiblackBinPlugin;
 import AnalizaObrazow.reports.report1.plugins.context.binar.SauvolaBinPlugin;
-import AnalizaObrazow.reports.report1.plugins.context.MedianFilterPlugin;
 import AnalizaObrazow.reports.report1.plugins.generators.DummyNoiseGenerationPlugin;
 import AnalizaObrazow.reports.report1.plugins.generators.GaussNoiseGeneratorPlugin;
 import AnalizaObrazow.reports.report1.plugins.generators.SaltAndPepperGeneratorPlugin;

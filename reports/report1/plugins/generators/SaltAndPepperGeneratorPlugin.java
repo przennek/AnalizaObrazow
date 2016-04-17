@@ -4,7 +4,6 @@ import kimage.image.Image;
 import kimage.plugin.Plugin;
 import kimage.plugins.color.Grayscale;
 
-import java.util.Date;
 import java.util.Random;
 
 /**
