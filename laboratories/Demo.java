@@ -1,17 +1,15 @@
 package AnalizaObrazow.laboratories;
 
-import AnalizaObrazow.laboratories.plugins.GrayscalePlugin;
-import AnalizaObrazow.laboratories.plugins.HistStrechPlugin;
-import kimage.image.Image;
+import AnalizaObrazow.laboratories.plugins.SobelPlugin;
 import kimage.plugin.Plugin;
-import kimage.utils.gui.ImageFrame;
-import kimage.utils.histogram.gui.HistogramGUI;
+import kimage.tools.executors.Executor;
+import kimage.tools.executors.gui.StepHandlerExecutor;
 
 public class Demo {
 
     public static void main(String[] args) {
-        Image image = new Image("./res/lena.png");
-
+//        Image image = new Image("./res/lena.png");
+        /*
         Plugin gPlug = new GrayscalePlugin();
         gPlug.process(image, image);
 
@@ -29,5 +27,10 @@ public class Demo {
 
         ImageFrame frame3 = new ImageFrame(image);
         frame3.display();
+        */
+        Plugin sobel = new SobelPlugin();
+        Executor ex = new StepHandlerExecutor("./res/lena.png");
+        ex.add(new SobelPlugin());
+        ex.execute();
     }
 }

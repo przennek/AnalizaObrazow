@@ -4,8 +4,8 @@ import kimage.image.Image;
 import kimage.plugin.Plugin;
 import kimage.plugins.color.Grayscale;
 
-import static AnalizaObrazow.reports.report1.util.ImageProcUtil.getMedian;
-import static AnalizaObrazow.reports.report1.util.ImageProcUtil.getNeighbours;
+import static AnalizaObrazow.reports.util.ImageProcUtil.getMedian;
+import static AnalizaObrazow.reports.util.ImageProcUtil.getNeighbours;
 
 /**
  * Created by p on 17.04.16.

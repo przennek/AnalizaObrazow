@@ -1,4 +1,4 @@
-package AnalizaObrazow.reports.report1.plugins.generators;
+package AnalizaObrazow.reports.generators;
 
 import kimage.image.Image;
 import kimage.plugin.Plugin;

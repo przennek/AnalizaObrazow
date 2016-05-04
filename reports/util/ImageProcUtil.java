@@ -1,4 +1,4 @@
-package AnalizaObrazow.reports.report1.util;
+package AnalizaObrazow.reports.util;
 
 import kimage.image.Image;
 

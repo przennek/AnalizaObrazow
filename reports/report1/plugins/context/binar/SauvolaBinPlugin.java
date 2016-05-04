@@ -6,7 +6,7 @@ import kimage.plugins.color.Grayscale;
 
 import java.util.List;
 
-import static AnalizaObrazow.reports.report1.util.ImageProcUtil.*;
+import static AnalizaObrazow.reports.util.ImageProcUtil.*;
 
 /**
  * Created by p on 17.04.16.
