@@ -20,6 +20,10 @@ abstract class AbstractOperationStrategy implements IOperationStrategy {
         }
     }
 
+    public AbstractOperationStrategy(Integer[][] sE) {
+        this.sE = sE;
+    }
+
     protected AbstractOperationStrategy() {
     }
 
