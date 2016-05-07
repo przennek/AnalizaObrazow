@@ -6,13 +6,8 @@ package AnalizaObrazow.reports.report2.plugins.Strategy;
 public class DylateBWStrategy extends AbstractOperationStrategy {
     private static final Integer MAX_VAL = 255;
 
-    @Override
-    public Integer getHitVal(Integer x, Integer y) {
-        return MAX_VAL;
-    }
-
-    @Override
-    public Integer getFillVal(Integer x, Integer y) {
-        return MAX_VAL;
+    public DylateBWStrategy(Integer n) {
+        super(MAX_VAL, n);
+        fillVal = MAX_VAL;
     }
 }

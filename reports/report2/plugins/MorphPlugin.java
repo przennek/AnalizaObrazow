@@ -10,20 +10,20 @@ import kimage.plugin.Plugin;
  */
 public class MorphPlugin extends Plugin {
     private IOperationStrategy strategy;
-    private Integer se;
+    private Integer dDim;
 
-    public MorphPlugin(IOperationStrategy strategy, Integer se) {
+    public MorphPlugin(IOperationStrategy strategy) {
         this.strategy = strategy;
-        this.se = se;
+        this.dDim = strategy.getdDim();
     }
 
     @Override
     public void process(Image imgIn, Image imgOut) {
         imgIn = imgIn.copy();
         new GrayscalePlugin().process(imgIn, imgIn);
-        for (int i = se; i < imgIn.getWidth() - se; i++) {
-            for (int j = se; j < imgIn.getHeight() - se; j++) {
-                strategy.apply(imgIn, imgOut, i, j, se);
+        for (int i = dDim; i < imgIn.getWidth() - dDim; i++) {
+            for (int j = dDim; j < imgIn.getHeight() - dDim; j++) {
+                strategy.apply(imgIn, imgOut, i, j, dDim);
             }
         }
     }

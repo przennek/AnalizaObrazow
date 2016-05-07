@@ -6,13 +6,8 @@ package AnalizaObrazow.reports.report2.plugins.Strategy;
 public class ErodeBWStrategy extends AbstractOperationStrategy {
     private static final Integer MIN_VAL = 0;
 
-    @Override
-    public Integer getHitVal(Integer x, Integer y) {
-        return MIN_VAL;
-    }
-
-    @Override
-    public Integer getFillVal(Integer x, Integer y) {
-        return MIN_VAL;
+    public ErodeBWStrategy(Integer n) {
+        super(MIN_VAL, 3);
+        fillVal = MIN_VAL;
     }
 }
