@@ -29,10 +29,14 @@ public class SubstractHitsPlugin extends Plugin {
 
             }
         }
-        for (int i = 0; i < imgIn.getWidth(); i++) {
-            for (int j = 0; j < imgIn.getHeight(); j++) {
-                Integer color = imgOut.getBlue(i, j) == 0 ? 255 : 0;
-                imgOut.setRGB(i, j, color, color, color);
+        negate(imgOut);
+    }
+
+    public static void negate(Image im) {
+        for (int i = 0; i < im.getWidth(); i++) {
+            for (int j = 0; j < im.getHeight(); j++) {
+                Integer color = im.getBlue(i, j) == 0 ? 255 : 0;
+                im.setRGB(i, j, color, color, color);
             }
         }
     }

@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static AnalizaObrazow.reports.report2.Util.MatrixProvider.*;
+import static AnalizaObrazow.reports.report2.plugins.SubstractHitsPlugin.negate;
 
 /**
  * Created by p on 04.04.16.
@@ -63,7 +64,17 @@ public class Demo {
     private static void linesRemoval() {
         strategyList.addAll(
                 Arrays.asList(
-                // I give up
+                        new BWStrategy(MATRIX_CUSTOM_DYLATE, 0),
+                        new BWStrategy(MATRIX_CUSTOM_DYLATE, 0),
+                        new BWStrategy(MATRIX_CUSTOM_DYLATE, 0),
+                        new BWStrategy(MATRIX_DIAG, 255),
+                        new BWStrategy(MATRIX_DIAG, 255),
+                        new BWStrategy(MATRIX_DIAG, 255),
+                        new BWStrategy(MATRIX_DIAG, 255),
+                        new BWStrategy(rotate90(MATRIX_DIAG), 255),
+                        new BWStrategy(rotate90(MATRIX_DIAG), 255),
+                        new BWStrategy(rotate90(MATRIX_DIAG), 255)
+
                 )
         );
         runIt(strategyList, 0, POINTS_AND_LINES);
@@ -124,6 +135,7 @@ public class Demo {
         Image orginalIm = new Image(LABIRYNTH);
         Image prevIm;
         Image im = null;
+        new ImageFrame(orginalIm).display();
 
         Integer counter = 0;
         do {
@@ -137,8 +149,11 @@ public class Demo {
             im = mergeResults(strategyList, BORDER_1, im);
             substract.process(prevIm, im);
         } while (!equals(im, prevIm));
-
+        negate(prevIm);
         new ImageFrame(prevIm).display();
+        Plugin merge = new MergeHitsPlugin(0, 255);
+        merge.process(prevIm, orginalIm);
+        new ImageFrame(orginalIm).display();
     }
 
     private static void runIt(List<IOperationStrategy> strategyList, Integer borders, String filename, Executor executor) {

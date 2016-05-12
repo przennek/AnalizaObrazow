@@ -9,6 +9,8 @@ final public class MatrixProvider {
     public static Integer[][] MATRIX_3x0 = new Integer[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
     public static Integer[][] MATRIX_POINTS = new Integer[][]{{-1, -1, -1, -1, 255, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1, -1, -1, -1}, {-1, 255, -1, -1, -1, -1, -1, 255, -1}, {-1, -1, -1, -1, -1, -1, -1, -1, -1}, {255, -1, -1, -1, -1, -1, -1, -1, 255}, {-1, -1, -1, -1, -1, -1, -1, -1, -1}, {-1, 255, -1, -1, -1, -1, -1, 255, -1}, {-1, -1, -1, -1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, 255, -1, -1, -1, -1}};
 
+    public static Integer[][] MATRIX_DIAG = new Integer[][]{{255, -1, -1}, {-1, 1, -1}, {-1, -1, 255}};
+
     public static Integer[][] MATRIX_R1 = new Integer[][]{
             {-1, 0, -1},
             {255, 0, 0},
