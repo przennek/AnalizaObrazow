@@ -5,43 +5,20 @@ import kimage.image.Image;
 /**
  * Created by p on 04.05.16.
  */
-abstract class AbstractOperationStrategy implements IOperationStrategy {
-    protected Integer[][] sE;
-    protected Integer fillVal;
+public class AbstractOperationStrategy implements IOperationStrategy {
+    private Integer[][] sE;
+    protected Integer fillValue;
     protected Integer dDim;
 
-
-    public AbstractOperationStrategy(Integer seVal, Integer n) {
-        sE = new Integer[n][n];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                sE[i][j] = seVal;
-            }
-        }
-    }
-
-    public AbstractOperationStrategy(Integer[][] sE) {
-        this.sE = sE;
-    }
-
     protected AbstractOperationStrategy() {
+        this.fillValue = 255;
+        dDim = 1;
     }
 
-    @Override
-    public void apply(final Image im, Image cpy, Integer x, Integer y, Integer n) {
-        Boolean shouldFill = false;
-        for (int i = x - n, z = 0; i <= x + n; i++, z++) {
-            for (int j = y - n, v = 0; j <= y + n; j++, v++) {
-                if (getHitVal(z, v).equals(im.getBlue(i, j))) {
-                    shouldFill = true;
-                }
-            }
-            if (shouldFill) {
-                Integer newVal = getFillVal(x, y);
-                cpy.setRGB(x, y, newVal, newVal, newVal);
-                break;
-            }
-        }
+    public AbstractOperationStrategy(Integer[][] sE, Integer fillVal) {
+        this.sE = sE;
+        this.fillValue = fillVal;
+        this.dDim = sE.length / 2;
     }
 
     @Override
@@ -51,11 +28,33 @@ abstract class AbstractOperationStrategy implements IOperationStrategy {
 
     @Override
     public Integer getFillVal(Integer x, Integer y) {
-        return fillVal;
+        return fillValue;
     }
 
     @Override
     public Integer getdDim() {
         return dDim;
+    }
+
+    @Override
+    public void apply(final Image im, Image cpy, Integer x, Integer y, Integer n) {
+        Boolean shouldFill = false;
+        Integer newVal = null;
+        for (int i = x - n, z = 0; i <= x + n; i++, z++) {
+            for (int j = y - n, v = 0; j <= y + n; j++, v++) {
+                if (getHitVal(z, v).equals(im.getBlue(i, j))) {
+                    shouldFill = true;
+                    newVal = getFillVal(x, y);
+                }
+            }
+            if (shouldFill) {
+                cpy.setRGB(x, y, newVal, newVal, newVal);
+                break;
+            }
+        }
+    }
+
+    protected boolean shouldBeFilled(Integer hit, Integer comp) {
+        return hit.equals(comp);
     }
 }
