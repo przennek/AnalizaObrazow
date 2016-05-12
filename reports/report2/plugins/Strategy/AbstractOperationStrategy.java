@@ -5,15 +5,15 @@ import kimage.image.Image;
 /**
  * Created by p on 04.05.16.
  */
-public abstract class AbstractOperationStrategy implements IOperationStrategy {
+abstract class AbstractOperationStrategy implements IOperationStrategy {
     private Integer[][] sE;
-    protected Integer fillValue;
-    protected Integer dDim;
+    private Integer fillValue;
+    Integer dDim;
 
-    protected AbstractOperationStrategy() {
+    AbstractOperationStrategy() {
     }
 
-    public AbstractOperationStrategy(Integer[][] sE, Integer fillVal) {
+    AbstractOperationStrategy(Integer[][] sE, Integer fillVal) {
         this.sE = sE;
         this.fillValue = fillVal;
         this.dDim = sE.length / 2;
