@@ -5,14 +5,12 @@ import kimage.image.Image;
 /**
  * Created by p on 04.05.16.
  */
-public class AbstractOperationStrategy implements IOperationStrategy {
+public abstract class AbstractOperationStrategy implements IOperationStrategy {
     private Integer[][] sE;
     protected Integer fillValue;
     protected Integer dDim;
 
     protected AbstractOperationStrategy() {
-        this.fillValue = 255;
-        dDim = 1;
     }
 
     public AbstractOperationStrategy(Integer[][] sE, Integer fillVal) {
@@ -54,7 +52,5 @@ public class AbstractOperationStrategy implements IOperationStrategy {
         }
     }
 
-    protected boolean shouldBeFilled(Integer hit, Integer comp) {
-        return hit.equals(comp);
-    }
+    abstract protected boolean shouldBeFilled(Integer hit, Integer comp);
 }

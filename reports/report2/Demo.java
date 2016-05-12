@@ -23,14 +23,14 @@ public class Demo {
     private static final Integer MAX_VAL = 255;
     private static final Integer MIN_VAL = 0;
     private static final Integer IGNORING_VAL = -1;
-    
+
     private static Integer[][] dylateCustom = new Integer[][]{{IGNORING_VAL, MIN_VAL, IGNORING_VAL}, {MIN_VAL, IGNORING_VAL, MIN_VAL}, {IGNORING_VAL, MIN_VAL, IGNORING_VAL}};
     private static Integer[][] matrix3x255 = new Integer[][]{{MAX_VAL, MAX_VAL, MAX_VAL}, {MAX_VAL, MAX_VAL, MAX_VAL}, {MAX_VAL, MAX_VAL, MAX_VAL}};
     private static Integer[][] matrix3x0 = new Integer[][]{{MIN_VAL, MIN_VAL, MIN_VAL}, {MIN_VAL, MIN_VAL, MIN_VAL}, {MIN_VAL, MIN_VAL, MIN_VAL}};
     private static Integer[][] pointsMatrix = new Integer[][]{{IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, MAX_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {MAX_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, MAX_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}};
 
-    private static Integer[][] linesHorizontalMatrix = new Integer[][]{{MAX_VAL, MAX_VAL, MAX_VAL, MAX_VAL, MAX_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}};
-    private static Integer[][] linesVerticalMatrix = new Integer[][]{{IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}};
+//    private static Integer[][] linesHorizontalMatrix = new Integer[][]{{MAX_VAL, MAX_VAL, MAX_VAL, MAX_VAL, MAX_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}};
+//    private static Integer[][] linesVerticalMatrix = new Integer[][]{{IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, MAX_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}, {IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL, IGNORING_VAL}};
 
     public static void main(String[] args) {
         List<IOperationStrategy> strategyList = new ArrayList<>();
@@ -52,11 +52,11 @@ public class Demo {
         // lines removal
         strategyList.addAll(
                 Arrays.asList(
-                        new BWStrategy(linesHorizontalMatrix, MAX_VAL),
-                        new BWStrategy(linesVerticalMatrix, MAX_VAL)
+//                        new BWStrategy(linesHorizontalMatrix, MAX_VAL),
+//                        new BWStrategy(linesVerticalMatrix, MAX_VAL)
                 )
         );
-//        runIt(strategyList, border4);
+//        runIt(strategyList, linesMatrix.length, filename);
         strategyList.clear();
 
         // salt and pepper removal
@@ -65,11 +65,19 @@ public class Demo {
         Image saltAndPepperLenna = saltPeper.getResultImage();
         strategyList.addAll(
                 Arrays.asList(
-                        new GrayStrategy(saltAndPepperLenna, border1, MAX_VAL, (int a, int b) -> a <= b),
-                        new GrayStrategy(saltAndPepperLenna, border1, MIN_VAL, (int a, int b) -> a >= b)
+                        new GrayStrategy(saltAndPepperLenna, border1, MAX_VAL, (a, b) -> a <= b),
+                        new GrayStrategy(saltAndPepperLenna, border1, MIN_VAL, (a, b) -> a >= b)
                 )
         );
-        runIt(strategyList, border1, saltPeper);
+//        runIt(strategyList, border1, saltPeper);
+        strategyList.clear();
+
+        // way find
+        strategyList.addAll(
+                Arrays.asList(
+
+                )
+        );
     }
 
     public static void runIt(List<IOperationStrategy> strategyList, Integer borders, String filename, Executor executor) {
@@ -89,3 +97,4 @@ public class Demo {
         runIt(strategyList, borders, null, executor);
     }
 }
+
