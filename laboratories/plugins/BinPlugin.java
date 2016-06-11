@@ -11,18 +11,23 @@ import kimage.utils.gui.ImageFrame;
 public class BinPlugin extends ThresholdPlugin {
     private int threshold = 100;
 
-//    @Override
-//    public void process(Image imgIn, Image imgOut) {
-//        for (int i = 0; i < imgIn.getWidth(); ++i) {
-//            for (int j = 0; j < imgIn.getHeight(); ++j) {
-//                if (imgIn.getRed(i, j) < threshold) {
-//                    imgOut.setRGB(i, j, 0, 0, 0);
-//                } else {
-//                    imgOut.setRGB(i, j, 255, 255, 255);
-//                }
-//            }
-//        }
-//    }
+    public BinPlugin withThreshold(int threshold) {
+        this.threshold = threshold;
+        return this;
+    }
+
+    @Override
+    public void process(Image imgIn, Image imgOut) {
+        for (int i = 0; i < imgIn.getWidth(); ++i) {
+            for (int j = 0; j < imgIn.getHeight(); ++j) {
+                if (imgIn.getRed(i, j) < threshold) {
+                    imgOut.setRGB(i, j, 0, 0, 0);
+                } else {
+                    imgOut.setRGB(i, j, 255, 255, 255);
+                }
+            }
+        }
+    }
 
     @Override
     public int getThreshold(Image imgIn) {

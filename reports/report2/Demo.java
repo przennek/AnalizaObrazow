@@ -9,7 +9,6 @@ import AnalizaObrazow.reports.report2.plugins.Strategy.GrayStrategy;
 import AnalizaObrazow.reports.report2.plugins.Strategy.IOperationStrategy;
 import AnalizaObrazow.reports.report2.plugins.SubstractHitsPlugin;
 import kimage.image.Image;
-import kimage.image.ImageForThreads;
 import kimage.plugin.Plugin;
 import kimage.tools.executors.Executor;
 import kimage.tools.executors.gui.StepHandlerExecutor;
@@ -41,10 +40,10 @@ public class Demo {
     private static final Integer BORDER_1 = 1;
 
     public static void main(String[] args) {
-//        pointsRemoval();
-//        linesRemoval();
-//        saltAndPepperRemoval();
-//        wayFind();
+        pointsRemoval();
+        linesRemoval();
+        saltAndPepperRemoval();
+        wayFind();
         thinningDemo();
     }
 

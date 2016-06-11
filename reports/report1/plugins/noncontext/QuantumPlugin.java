@@ -27,8 +27,8 @@ public class QuantumPlugin extends Plugin {
     public void process(Image imgIn, Image imgOut) {
         (new Grayscale()).process(imgIn, imgOut);
         List<Integer> intrlv = createIntevals();
-        for (int i = 0; i < imgOut.getHeight(); i++) {
-            for (int j = 0; j < imgOut.getWidth(); j++) {
+        for (int i = 0; i < imgOut.getWidth(); i++) {
+            for (int j = 0; j < imgOut.getHeight(); j++) {
                 Double index = (Math.ceil(((double) imgOut.getBlue(i, j) / (double) MAX_PIXEL_VAL) * (double) intervals));
                 Integer val = intrlv.get(index.intValue());
                 imgOut.setRGB(i, j, val, val, val);

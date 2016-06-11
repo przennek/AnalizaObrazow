@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by p on 09.05.16.
  */
-public class CCLPlugin extends Plugin {
+public class CCLPlugin extends Plugin { // Connected Component labeling
     @Override
     public void process(Image imgIn, Image imgOut) {
         // background init
